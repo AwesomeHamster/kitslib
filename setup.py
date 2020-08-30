@@ -1,19 +1,17 @@
-import pathlib
-import setuptools
+from setuptools import setup, find_packages
 
-# The directory containing this file
-HERE = pathlib.Path(__file__).parent
+with open('README.md') as f:
+    readme = f.read()
 
-# The text of the README file
-README = (HERE / "README.md").read_text()
+packages = find_packages(include=('kitslib', 'kitslib.*'))
 
-# This call to setup() does all the work
-setuptools.setup(
+setup(
     name="kitslib",
     version="0.0.1",
+    url='https://github.com/AwesomeHamster/kitslib',
     description="Common library for kitsunebi",
-    long_description=README,
-    long_description_content_type="text/x-markdown",
+    long_description=readme,
+    long_description_content_type="text/markdown",
     author="Maiko Tan",
     author_email="maiko.tan.coding@gmail.com",
     license="MIT",
@@ -21,6 +19,7 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Programming Language :: Python"
     ],
-    packages=setuptools.find_packages(),
-    python_requires=">=3.7"
+    packages=packages,
+    python_requires=">=3.7",
+    install_requires=['aiohttp>=3.6.2']
 )
