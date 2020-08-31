@@ -16,10 +16,16 @@ setup(
     author_email="maiko.tan.coding@gmail.com",
     license="MIT",
     classifiers=[
+        "Development Status :: 3 - Alpha",
         "License :: OSI Approved :: MIT License",
-        "Programming Language :: Python"
+        "Operating System :: MacOS",
+        "Operating System :: Microsoft :: Windows",
+        "Operating System :: POSIX :: Linux",
+        "Programming Language :: Python :: 3",
+        "Topic :: Software Development :: Libraries :: Python Modules",
     ],
     packages=packages,
     python_requires=">=3.7",
-    install_requires=['aiohttp>=3.6.2']
+    platforms = ['nt', 'posix', 'os2'],
+    install_requires=['aiohttp>=3.6.2'],
 )
