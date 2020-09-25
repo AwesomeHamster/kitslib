@@ -34,14 +34,14 @@ async def get_post(
 
     try:
         async with session.post(POST_JSON_API, params=params, headers=headers) as resp:
-            imgs: List[Any] = await resp.json(content_type=None)
+            imgs: List[Any] = await resp.json()
 
-            return list(map(parse_images, imgs))
+            return list(map(_parse_images, imgs))
     except ConnectionError:
         raise RuntimeError("found nothing")
 
 
-def parse_images(image_element) -> ImageInfo:
+def _parse_images(image_element) -> ImageInfo:
     return ImageInfo(
         image_id=image_element.get("id"),
         large=str(image_element.get("sample_url")),
